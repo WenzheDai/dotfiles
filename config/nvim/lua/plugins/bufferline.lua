@@ -5,36 +5,32 @@ return {
     options = {
       themable = true,
       show_close_icon = true,
-      -- ordinal
       numbers = "ordinal",
-      -- buffer_close_icon = "",
+      buffer_close_icon = "",
       modified_icon = "●",
       close_icon = "",
       left_trunc_marker = "",
       right_trunc_marker = "",
-      separator_style = "thin",
-      indicator = { icon = "▎", style = "icon" },
-      diagnostics = "nvim_lsp",
-      always_show_bufferline = false,
-      -- diagnostics_indicator = function(_, _, diag)
-      --   local icons = require("lazyvim.config").icons.diagnostics
-      --   local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-      --     .. (diag.warning and icons.Warn .. diag.warning or "")
-      --   return vim.trim(ret)
-      -- end,
+      separator_style = { "", "" },
+      indicator_icon = " ",
+      always_show_bufferline = true,
+      diagnostics_indicator = function(count, level, diagnostics_dict, context)
+        return ""
+      end,
       offsets = {
         {
           filetype = "neo-tree",
-          text = "Neo-tree",
-          highlight = "Directory",
+          text = "EXPLORER",
           text_align = "center",
+          highlight = "Directory",
+          padding = 0,
         },
         {
           filetype = "NvimTree",
-          text = "Nvim-Tree",
-          highlight = "Directory",
+          text = "EXPLORER",
           text_align = "center",
-          padding = 1,
+          highlight = "Directory",
+          padding = 0,
         },
         {
           filetype = "aerial",
@@ -82,26 +78,6 @@ return {
       "<leader>bq",
       "<cmd>BufferLinePickClose<cr>",
       desc = "Close target buffer",
-    },
-    {
-      "<A-h>",
-      "<cmd>BufferLineCyclePrev<cr>",
-      desc = "Go to left buffer",
-    },
-    {
-      "<A-l>",
-      "<cmd>BufferLineCycleNext<cr>",
-      desc = "Go to right buffer",
-    },
-    {
-      "<A-e>",
-      "<cmd>BufferLineMovePrev<cr>",
-      desc = "Move current buffer to left",
-    },
-    {
-      "<A-y>",
-      "<cmd>BufferLineMoveNext<cr>",
-      desc = "Move current buffer to right",
     },
     {
       "<leader>bn",
@@ -189,6 +165,16 @@ return {
       "<A-9>",
       "<cmd>BufferLineGoToBuffer 9<cr>",
       desc = "Go to buffer 9",
+    },
+    {
+      "<A-h>",
+      "<cmd>BufferLineMovePrev<cr>",
+      desc = "Move current buffer to left",
+    },
+    {
+      "<A-l>",
+      "<cmd>BufferLineMoveNext<cr>",
+      desc = "Move current buffer to right",
     },
   },
 }

@@ -1,6 +1,7 @@
 return {
   "nvim-tree/nvim-tree.lua",
   lazy = true,
+  cond = false,
   event = "VeryLazy",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
@@ -39,7 +40,7 @@ return {
         signcolumn = "yes",
       },
       diagnostics = {
-        enable = true,
+        enable = false,
         show_on_dirs = true,
         icons = {
           error = icons.diagnostics.Error,
@@ -77,7 +78,7 @@ return {
         highlight_opened_files = "none",
         indent_width = 2,
         indent_markers = {
-          enable = true,
+          enable = false,
           inline_arrows = true,
           icons = {
             corner = "└",
@@ -127,7 +128,7 @@ return {
   end,
   keys = {
     {
-      "<leader>e",
+      "<leader>1",
       function()
         vim.cmd("NvimTreeToggle")
       end,
